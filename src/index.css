@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom map marker */
+.streetmap-marker {
+  background: transparent;
+  border: none;
+}
+.streetmap-pin {
+  position: relative;
+  width: 34px;
+  height: 44px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+}
+.streetmap-pin::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 4px;
+  transform: translateX(-50%);
+  width: 26px;
+  height: 26px;
+  border-radius: 50% 50% 50% 0;
+  background: linear-gradient(135deg, #34d399, #059669);
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  transform: translateX(-50%) rotate(-45deg);
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+  transition: transform 0.2s ease;
+}
+.streetmap-pin:hover::before {
+  transform: translateX(-50%) rotate(-45deg) scale(1.12);
+}
+.streetmap-badge {
+  position: absolute;
+  top: -4px;
+  right: -6px;
+  z-index: 2;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 9px;
+  background: #f59e0b;
+  color: #1e293b;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 18px;
+  text-align: center;
+  border: 1.5px solid #ffffff;
+}
+
+/* Leaflet popup theming */
+.leaflet-popup-content-wrapper {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+.leaflet-popup-content {
+  margin: 10px 12px;
+}
+.leaflet-popup-tip {
+  background: #ffffff;
+}
+
+/* Scrollbar */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.4);
+  border-radius: 3px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.7);
+}
+
+/* Leaflet controls light theme */
+.leaflet-bar a {
+  background: #ffffff;
+  color: #334155;
+  border-bottom-color: #e2e8f0;
+}
+.leaflet-bar a:hover {
+  background: #f1f5f9;
+}

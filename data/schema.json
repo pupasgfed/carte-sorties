@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Hypnose de Rue — Event",
+  "type": "object",
+  "required": ["id", "title", "date_start", "lat", "lng", "city", "status"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique slug-like identifier (also used as filename)."
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "description": {
+      "type": ["string", "null"],
+      "maxLength": 1000
+    },
+    "date_start": {
+      "type": "string",
+      "format": "date"
+    },
+    "date_end": {
+      "type": ["string", "null"],
+      "format": "date"
+    },
+    "lat": {
+      "type": "number",
+      "minimum": -90,
+      "maximum": 90
+    },
+    "lng": {
+      "type": "number",
+      "minimum": -180,
+      "maximum": 180
+    },
+    "city": {
+      "type": "string",
+      "minLength": 1
+    },
+    "link": {
+      "type": ["string", "null"]
+    },
+    "image": {
+      "type": ["string", "null"],
+      "description": "URL of an image to display in the list panel."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["published", "draft"]
+    }
+  },
+  "additionalProperties": false
+}

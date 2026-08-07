@@ -1,0 +1,12 @@
+{
+  "id": "paris-sortie-brouillard-draft",
+  "title": "Sortie Brouillard (brouillon)",
+  "description": "Événement en cours de préparation, non visible publiquement.",
+  "date_start": "2026-11-01",
+  "date_end": null,
+  "lat": 48.8566,
+  "lng": 2.3522,
+  "city": "Paris",
+  "link": null,
+  "status": "draft"
+}

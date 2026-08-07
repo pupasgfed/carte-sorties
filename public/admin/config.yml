@@ -1,0 +1,46 @@
+backend:
+  name: github
+  repo: pupasgfed/carte-sorties
+  branch: main
+  auth_type: oauth
+  app_id: ""
+
+# Restrict access to a closed list of collaborators.
+# Add GitHub usernames of authorized editors below.
+collaborator_auth:
+  collaborators:
+    - pupasgfed
+
+media_folder: "data/media"
+public_folder: "/media"
+
+collections:
+  - name: "events"
+    label: "Sorties"
+    label_singular: "Sortie"
+    folder: "data/events"
+    create: true
+    delete: true
+    extension: "json"
+    format: "json"
+    slug: "{{id}}"
+    editor:
+      preview: false
+    fields:
+      - { name: "id", label: "Identifiant", widget: "string", hint: "Slug unique, utilisé comme nom de fichier." }
+      - { name: "title", label: "Titre", widget: "string" }
+      - { name: "description", label: "Description", widget: "text", required: false }
+      - { name: "date_start", label: "Date de début", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+      - { name: "date_end", label: "Date de fin", widget: "datetime", required: false, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+      - { name: "city", label: "Ville", widget: "string" }
+      - { name: "lat", label: "Latitude", widget: "number", value_type: "float", step: 0.0001 }
+      - { name: "lng", label: "Longitude", widget: "number", value_type: "float", step: 0.0001 }
+      - { name: "link", label: "Lien externe", widget: "string", required: false }
+      - { name: "image", label: "Image (URL)", widget: "string", required: false, hint: "URL d'une image affichée dans la liste des sorties." }
+      - name: "status"
+        label: "Statut"
+        widget: "select"
+        default: "published"
+        options:
+          - { label: "Publié", value: "published" }
+          - { label: "Brouillon", value: "draft" }

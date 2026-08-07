@@ -1,0 +1,152 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.5792,
+          44.8378
+        ]
+      },
+      "properties": {
+        "id": "bordeaux-atelier-gardeyne",
+        "title": "Atelier au Jardin Public",
+        "description": "Atelier de découverte de l'hypnose en plein air. Places limitées, pensez à arriver en avance.",
+        "date_start": "2026-08-15",
+        "date_end": null,
+        "city": "Bordeaux",
+        "link": null,
+        "image": "https://i.imgur.com/86tyrlu.jpeg",
+        "status": "published"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.8522,
+          45.7696
+        ]
+      },
+      "properties": {
+        "id": "lyon-sortie-parc",
+        "title": "Sortie au Parc de la Tête d'Or",
+        "description": "Hypnose de rue dans le cadre verdoyant du parc. Rencontre à l'entrée principale.",
+        "date_start": "2026-09-20",
+        "date_end": null,
+        "city": "Lyon",
+        "link": null,
+        "image": null,
+        "status": "published"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.3698,
+          43.2965
+        ]
+      },
+      "properties": {
+        "id": "marseille-spectacle-vieuxport",
+        "title": "Spectacle au Vieux-Port",
+        "description": "Démonstration publique d'hypnose sur le Vieux-Port. Entrée libre.",
+        "date_start": "2026-10-05",
+        "date_end": "2026-10-05",
+        "city": "Marseille",
+        "link": "https://www.hypnosekinky.com/",
+        "image": null,
+        "status": "published"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.5554,
+          47.2184
+        ]
+      },
+      "properties": {
+        "id": "nantes-sortie-ilebeaulieu",
+        "title": "Sortie sur l'Île de Beaulieu",
+        "description": "Séance d'hypnose en bord de l'Erdre. Ambiance conviviale et détendue.",
+        "date_start": "2026-08-22",
+        "date_end": "2026-08-22",
+        "city": "Nantes",
+        "link": "https://www.hypnosekinky.com/",
+        "image": null,
+        "status": "published"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3376,
+          48.8606
+        ]
+      },
+      "properties": {
+        "id": "paris-atelier-decouverte",
+        "title": "Atelier Découverte — Hypnose de Rue",
+        "description": "Une séance d'initiation à l'hypnose en plein air, ouverte à tous. Apportez votre bonne humeur et un plaid si vous le souhaitez.",
+        "date_start": "2026-09-12",
+        "date_end": "2026-09-12",
+        "city": "Paris",
+        "link": "https://www.hypnosekinky.com/",
+        "image": null,
+        "status": "published"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3522,
+          48.8566
+        ]
+      },
+      "properties": {
+        "id": "paris-sortie-brouillard-draft",
+        "title": "Sortie Brouillard (brouillon)",
+        "description": "Événement en cours de préparation, non visible publiquement.",
+        "date_start": "2026-11-01",
+        "date_end": null,
+        "city": "Paris",
+        "link": null,
+        "image": null,
+        "status": "draft"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.05,
+          45.8
+        ]
+      },
+      "properties": {
+        "id": "qwreqwer",
+        "title": "Laide wlkj ",
+        "description": "lorem ipsum",
+        "date_start": "2026-08-05",
+        "date_end": null,
+        "city": "Paris",
+        "link": null,
+        "image": "https://i.imgur.com/86tyrlu.jpeg",
+        "status": "published"
+      }
+    }
+  ]
+}
