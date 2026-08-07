@@ -44,3 +44,34 @@ collections:
         options:
           - { label: "Publié", value: "published" }
           - { label: "Brouillon", value: "draft" }
+
+  - name: "articles"
+    label: "Articles"
+    label_singular: "Article"
+    folder: "data/articles"
+    create: true
+    delete: true
+    extension: "md"
+    format: "frontmatter"
+    slug: "{{slug}}"
+    editor:
+      preview: true
+    fields:
+      - { name: "title", label: "Titre", widget: "string" }
+      - { name: "date", label: "Date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+      - { name: "author", label: "Auteur", widget: "string" }
+      - name: "categories"
+        label: "Catégories"
+        widget: "list"
+        required: false
+        field: { name: "category", label: "Catégorie", widget: "string" }
+      - { name: "excerpt", label: "Extrait", widget: "text", required: false, hint: "Court résumé affiché dans la liste des articles." }
+      - { name: "cover", label: "Image de couverture (URL)", widget: "string", required: false }
+      - name: "status"
+        label: "Statut"
+        widget: "select"
+        default: "published"
+        options:
+          - { label: "Publié", value: "published" }
+          - { label: "Brouillon", value: "draft" }
+      - { name: "body", label: "Contenu", widget: "markdown" }

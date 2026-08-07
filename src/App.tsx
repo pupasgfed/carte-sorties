@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { List, Sparkles, Calendar, X, Mail, ExternalLink, MapPin } from 'lucide-react';
+import { List, Sparkles, Calendar, X, Mail, ExternalLink, MapPin, BookOpen } from 'lucide-react';
 import StreetMap from '@/components/StreetMap';
 import ListView from '@/components/ListView';
+import ArticlesView from '@/components/ArticlesView';
 import {
   loadEvents,
   filterByPeriod,
@@ -9,6 +10,26 @@ import {
   type StreetEvent,
   type PeriodFilter,
 } from '@/lib/events';
+
+type View = 'map' | 'articles';
+
+function parseHash(): { view: View; slug: string | null } {
+  const hash = window.location.hash.replace(/^#\/?/, '');
+  if (hash.startsWith('articles')) {
+    const parts = hash.split('/');
+    const slug = parts.length > 1 && parts[1] ? parts[1] : null;
+    return { view: 'articles', slug };
+  }
+  return { view: 'map', slug: null };
+}
+
+function setHash(view: View, slug: string | null) {
+  if (view === 'articles') {
+    window.location.hash = slug ? `#/articles/${slug}` : '#/articles';
+  } else {
+    window.location.hash = '';
+  }
+}
 
 export default function App() {
   const [allEvents, setAllEvents] = useState<StreetEvent[]>([]);
@@ -18,6 +39,13 @@ export default function App() {
   const [focus, setFocus] = useState<{ lat: number; lng: number; zoom?: number } | null>(null);
   const [showList, setShowList] = useState(false);
   const [period, setPeriod] = useState<PeriodFilter>('upcoming');
+  const [route, setRoute] = useState<{ view: View; slug: string | null }>(() => parseHash());
+
+  useEffect(() => {
+    const onHashChange = () => setRoute(parseHash());
+    window.addEventListener('hashchange', onHashChange);
+    return () => window.removeEventListener('hashchange', onHashChange);
+  }, []);
 
   useEffect(() => {
     loadEvents()
@@ -37,6 +65,15 @@ export default function App() {
     setSelected(e);
     setFocus({ lat: e.lat, lng: e.lng, zoom: 13 });
   }, []);
+
+  if (route.view === 'articles') {
+    return (
+      <ArticlesView
+        initialSlug={route.slug}
+        onBack={() => setHash('map', null)}
+      />
+    );
+  }
 
   return (
     <div className="relative h-screen w-screen overflow-hidden bg-slate-100 text-slate-800">
@@ -70,6 +107,14 @@ export default function App() {
           >
             <List className="h-3.5 w-3.5" />
             <span className="hidden sm:inline">Liste</span>
+          </button>
+          <button
+            onClick={() => setHash('articles', null)}
+            title="Articles"
+            className="flex items-center gap-1.5 rounded-full bg-white/80 border border-slate-200 px-3 py-1.5 text-xs text-slate-700 hover:border-emerald-500/50 hover:text-emerald-600 backdrop-blur transition"
+          >
+            <BookOpen className="h-3.5 w-3.5" />
+            <span className="hidden sm:inline">Articles</span>
           </button>
         </div>
       </header>

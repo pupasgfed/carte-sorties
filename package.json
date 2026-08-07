@@ -5,16 +5,19 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/build-geojson.mjs && vite build",
+    "build": "node scripts/build-geojson.mjs && node scripts/build-articles.mjs && vite build",
     "build:geojson": "node scripts/build-geojson.mjs",
+    "build:articles": "node scripts/build-articles.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit -p tsconfig.app.json",
     "test": "node --import tsx --test tests/*.test.mjs"
   },
   "dependencies": {
+    "gray-matter": "^4.0.3",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.446.0",
+    "marked": "^18.0.9",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-leaflet": "^4.2.1"
@@ -22,6 +25,7 @@
   "devDependencies": {
     "@eslint/js": "^9.9.1",
     "@types/leaflet": "^1.9.22",
+    "@types/marked": "^5.0.2",
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",

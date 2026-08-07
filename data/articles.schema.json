@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Hypnose de Rue — Article",
+  "type": "object",
+  "required": ["title", "date", "author", "status", "body"],
+  "properties": {
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "author": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "categories": {
+      "type": "array",
+      "items": { "type": "string" },
+      "maxItems": 10
+    },
+    "excerpt": {
+      "type": ["string", "null"],
+      "maxLength": 500
+    },
+    "cover": {
+      "type": ["string", "null"],
+      "description": "URL of a cover image."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["published", "draft"]
+    },
+    "body": {
+      "type": "string",
+      "description": "Markdown body content."
+    }
+  },
+  "additionalProperties": false
+}

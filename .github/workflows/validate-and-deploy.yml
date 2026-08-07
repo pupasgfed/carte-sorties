@@ -31,8 +31,14 @@ jobs:
       - name: Validate event files against schema
         run: node scripts/validate-events.mjs
 
+      - name: Validate article files against schema
+        run: node scripts/validate-articles.mjs
+
       - name: Build GeoJSON
         run: node scripts/build-geojson.mjs
+
+      - name: Build articles JSON
+        run: node scripts/build-articles.mjs
 
       - name: Build site
         run: npm run build
