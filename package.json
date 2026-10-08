@@ -5,13 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/build-geojson.mjs && node scripts/build-articles.mjs && vite build",
+    "build": "node scripts/build-geojson.mjs && node scripts/build-articles.mjs && node scripts/build-hypnotists.mjs && vite build",
     "build:geojson": "node scripts/build-geojson.mjs",
     "build:articles": "node scripts/build-articles.mjs",
+    "build:hypnotists": "node scripts/build-hypnotists.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit -p tsconfig.app.json",
-    "test": "node --import tsx --test tests/*.test.mjs"
+    "test": "node --import tsx --test tests/*.test.mjs",
+    "validate:hypnotists": "node scripts/validate-hypnotists.mjs"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

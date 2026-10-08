@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { List, Sparkles, Calendar, X, Mail, ExternalLink, MapPin, BookOpen } from 'lucide-react';
+import { List, Sparkles, Calendar, X, Mail, ExternalLink, MapPin, BookOpen, Users } from 'lucide-react';
 import StreetMap from '@/components/StreetMap';
 import ListView from '@/components/ListView';
 import ArticlesView from '@/components/ArticlesView';
+import HypnotistsView from '@/components/HypnotistsView';
 import {
   loadEvents,
   filterByPeriod,
@@ -11,7 +12,7 @@ import {
   type PeriodFilter,
 } from '@/lib/events';
 
-type View = 'map' | 'articles';
+type View = 'map' | 'articles' | 'hypnotists';
 
 function parseHash(): { view: View; slug: string | null } {
   const hash = window.location.hash.replace(/^#\/?/, '');
@@ -20,12 +21,19 @@ function parseHash(): { view: View; slug: string | null } {
     const slug = parts.length > 1 && parts[1] ? parts[1] : null;
     return { view: 'articles', slug };
   }
+  if (hash.startsWith('hypnotists')) {
+    const parts = hash.split('/');
+    const slug = parts.length > 1 && parts[1] ? parts[1] : null;
+    return { view: 'hypnotists', slug };
+  }
   return { view: 'map', slug: null };
 }
 
 function setHash(view: View, slug: string | null) {
   if (view === 'articles') {
     window.location.hash = slug ? `#/articles/${slug}` : '#/articles';
+  } else if (view === 'hypnotists') {
+    window.location.hash = slug ? `#/hypnotists/${slug}` : '#/hypnotists';
   } else {
     window.location.hash = '';
   }
@@ -75,6 +83,15 @@ export default function App() {
     );
   }
 
+  if (route.view === 'hypnotists') {
+    return (
+      <HypnotistsView
+        initialId={route.slug}
+        onBack={() => setHash('map', null)}
+      />
+    );
+  }
+
   return (
     <div className="relative h-screen w-screen overflow-hidden bg-slate-100 text-slate-800">
       {/* Map */}
@@ -100,6 +117,14 @@ export default function App() {
         </div>
 
         <div className="flex items-center gap-2 pointer-events-auto">
+          <button
+            onClick={() => setHash('hypnotists', null)}
+            title="Annuaire des hypnotistes"
+            className="flex items-center gap-1.5 rounded-full bg-white/80 border border-slate-200 px-3 py-1.5 text-xs text-slate-700 hover:border-emerald-500/50 hover:text-emerald-600 backdrop-blur transition"
+          >
+            <Users className="h-3.5 w-3.5" />
+            <span className="hidden sm:inline">Annuaire</span>
+          </button>
           <button
             onClick={() => setShowList(true)}
             title="Voir la liste"

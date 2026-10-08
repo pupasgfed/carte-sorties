@@ -45,6 +45,40 @@ collections:
           - { label: "Publié", value: "published" }
           - { label: "Brouillon", value: "draft" }
 
+  - name: "hypnotists"
+    label: "Hypnotistes"
+    label_singular: "Hypnotiste"
+    folder: "data/hypnotists"
+    create: true
+    delete: true
+    extension: "json"
+    format: "json"
+    slug: "{{id}}"
+    editor:
+      preview: false
+    fields:
+      - { name: "id", label: "Identifiant", widget: "string", hint: "Slug unique, utilisé comme nom de fichier." }
+      - { name: "name", label: "Nom", widget: "string" }
+      - { name: "city", label: "Ville", widget: "string" }
+      - { name: "department", label: "Département", widget: "string", hint: "Numéro du département français, par exemple 75 ou 69." }
+      - { name: "rating", label: "Note", widget: "number", value_type: "int", min: 1, max: 5, step: 1 }
+      - { name: "image", label: "Photo principale (URL Imgur)", widget: "string", required: false }
+      - { name: "description", label: "Description", widget: "markdown", required: false, hint: "Les deux premières lignes sont utilisées comme résumé dans les cartes." }
+      - { name: "lat", label: "Latitude", widget: "number", value_type: "float", step: 0.0001, required: false }
+      - { name: "lng", label: "Longitude", widget: "number", value_type: "float", step: 0.0001, required: false }
+      - { name: "website", label: "Site web", widget: "string", required: false }
+      - { name: "instagram", label: "Instagram", widget: "string", required: false, hint: "Nom du compte, avec ou sans @." }
+      - { name: "twitter", label: "Twitter", widget: "string", required: false, hint: "Nom du compte, avec ou sans @." }
+      - { name: "phone", label: "Téléphone", widget: "string", required: false }
+      - { name: "email", label: "E-mail", widget: "string", required: false }
+      - name: "status"
+        label: "Statut"
+        widget: "select"
+        default: "published"
+        options:
+          - { label: "Publié", value: "published" }
+          - { label: "Brouillon", value: "draft" }
+
   - name: "articles"
     label: "Articles"
     label_singular: "Article"
